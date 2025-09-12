@@ -12,7 +12,8 @@ var service = new LivroService(repository);
 AdicionarLivrosIniciais(service);
 
 
-ExibirListaOrdenada("Listar Livros sem ordenação:", service.ListarLivros());
+
+service.ListarSemOrdenacao();
 ExibirListaOrdenada("Livros Ordenados por Título:", service.OrdenarLivros(l => l.Title));
 ExibirListaOrdenada("Livros Ordenados por Autores Ascendentes e Titulos Descendentes:", service.OrdenarLivrosPorAutorETitulo());
 ExibirListaOrdenada("Livros Ordenados por Edição descendente, Autores descendentes e Titulos ascendentes:", service.OrdenarLivrosPorEdicaoAutorETitulo());
@@ -29,6 +30,8 @@ void AdicionarLivrosIniciais(LivroService livroService)
 
 void ExibirListaOrdenada(string titulo, IEnumerable<Livro> livros)
 {
+    ConsoleHelper.PrintSeparator();
+
     Console.WriteLine(titulo);
     foreach (var livro in livros)
     {

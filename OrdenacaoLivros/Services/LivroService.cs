@@ -18,14 +18,11 @@ namespace OrdenacaoLivros.Services
             _repository.Adicionar(livro);
         }
 
-        public IReadOnlyList<Livro> ListarLivros()
+        public void ListarSemOrdenacao()
         {
-            var livros = _repository.ListarTodos();
-            if (!livros.Any())
-            {
-                Console.WriteLine("Não há livros cadastrados.");
-            }
-            return livros;
+
+            Console.WriteLine("Não há livros a serem ordenados.");
+            return;
         }
 
         public IEnumerable<Livro> OrdenarLivros<TKey>(Func<Livro, TKey> keySelector, bool descending = false)

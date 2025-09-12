@@ -6,5 +6,7 @@ namespace OrdenacaoLivros.Repositories
     {
         void Adicionar(Livro livro);
         IReadOnlyList<Livro> ListarTodos();
+
+        void ListarSemOrdenacao();
     }
 }

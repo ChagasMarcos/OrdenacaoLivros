@@ -12,6 +12,11 @@ namespace OrdenacaoLivros.Repositories
             _livros.Add(livro);
         }
 
+        public void ListarSemOrdenacao()
+        {
+            return;
+        }
+
         public IReadOnlyList<Livro> ListarTodos()
         {
             return _livros.AsReadOnly();
