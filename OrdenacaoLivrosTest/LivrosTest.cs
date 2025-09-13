@@ -23,6 +23,32 @@ namespace OrdenacaoLivrosTest
             mockRepository.Verify(repo => repo.Adicionar(livro), Times.Once);
         }
 
+
+        [Fact]
+        public void ListarSemOrdenacao_DeveChamarConsoleWriteLine()
+        {
+            // Arrange
+            var mockRepository = new Mock<ILivroRepository>();
+            var service = new LivroService(mockRepository.Object);
+
+            // Captura a saída do Console.WriteLine
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
+            // Act
+            service.ListarSemOrdenacao();
+
+            // Assert
+            // Verifica se a saída do console é a mensagem esperada
+            Assert.Equal("Não há livros a serem ordenados.\r\n", stringWriter.ToString());
+
+            // Restaura a saída padrão do console
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+        }
+
+
         [Fact]
         public void OrdenarLivrosPorTitulo_DeveOrdenarCorretamente()
         {
